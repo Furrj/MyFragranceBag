@@ -6,7 +6,6 @@ import styles from "./App.module.scss";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
-import Navbar from "../../ui/Navbar/Navbar";
 
 // TS
 import { initUserData, T_UserData } from "../../types/UserData.ts";
@@ -16,7 +15,6 @@ import { T_ValidateResult, initValidateResult } from "../../types/Validate.ts";
 import { checkValidSession } from "../../auth/AuthHandlers";
 
 // STORAGE
-import { getSessionInfoFromStorage } from "../../auth/Storage";
 import { getUserDataFromAPIResponse } from "../../utils/DataHandlers.ts";
 
 const App: React.FC = () => {
@@ -73,72 +71,50 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className={styles.root}>
-            {!verticalMode && (
-                <Navbar
-                    loggedIn={loggedIn}
-                    userData={userData}
-                    verticalMode={verticalMode}
-                />
-            )}
-            <div className={styles.appGridWrapper}>
-                <div className={styles.spacer} />
-
-                <div className={styles.appCont}>
-                    {validationCompleted ? (
-                        <Routes>
-                            <Route
-                                path="/login"
-                                element={
-                                    <Login
-                                        setUserData={setUserData}
-                                        setLoggedIn={setLoggedIn}
-                                        setValidationCompleted={
-                                            setValidationCompleted
-                                        }
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/register"
-                                element={
-                                    <Register
-                                        setUserData={setUserData}
-                                        setLoggedIn={setLoggedIn}
-                                        setValidationCompleted={
-                                            setValidationCompleted
-                                        }
-                                    />
-                                }
-                            />
-                            <Route
-                                path="/"
-                                element={
-                                    <Home
-                                        loggedIn={loggedIn}
-                                        validationCompleted={
-                                            validationCompleted
-                                        }
-                                        setUserData={setUserData}
-                                        setLoggedIn={setLoggedIn}
-                                    />
-                                }
-                            />
-                        </Routes>
-                    ) : (
-                        <h1>Loading...</h1>
-                    )}
-                </div>
-
-                <div className={styles.spacer} />
+        <div className="root">
+            <div className={styles.appCont}>
+                {validationCompleted ? (
+                    <Routes>
+                        <Route
+                            path="/login"
+                            element={
+                                <Login
+                                    setUserData={setUserData}
+                                    setLoggedIn={setLoggedIn}
+                                    setValidationCompleted={
+                                        setValidationCompleted
+                                    }
+                                />
+                            }
+                        />
+                        <Route
+                            path="/register"
+                            element={
+                                <Register
+                                    setUserData={setUserData}
+                                    setLoggedIn={setLoggedIn}
+                                    setValidationCompleted={
+                                        setValidationCompleted
+                                    }
+                                />
+                            }
+                        />
+                        <Route
+                            path="/"
+                            element={
+                                <Home
+                                    loggedIn={loggedIn}
+                                    validationCompleted={validationCompleted}
+                                    setUserData={setUserData}
+                                    setLoggedIn={setLoggedIn}
+                                />
+                            }
+                        />
+                    </Routes>
+                ) : (
+                    <h1>Loading...</h1>
+                )}
             </div>
-            {verticalMode && (
-                <Navbar
-                    loggedIn={loggedIn}
-                    userData={userData}
-                    verticalMode={verticalMode}
-                />
-            )}
         </div>
     );
 };
