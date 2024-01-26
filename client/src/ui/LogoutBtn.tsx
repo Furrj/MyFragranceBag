@@ -1,4 +1,5 @@
 import React from "react";
+import { NavigateFunction, useNavigate } from "react-router-dom";
 
 // TS
 import { initUserData, T_UserData } from "../types/UserData.ts";
@@ -9,10 +10,13 @@ interface IProps {
 }
 
 const LogoutBtn: React.FC<IProps> = ({ setUserData, setLoggedIn }) => {
+    const navigate: NavigateFunction = useNavigate();
+
     function logout(): void {
         localStorage.clear();
         setUserData(initUserData);
         setLoggedIn(false);
+        navigate("/login");
         return;
     }
 

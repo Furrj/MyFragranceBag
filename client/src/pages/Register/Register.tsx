@@ -125,22 +125,6 @@ const Register: React.FC<IProps> = ({
                 autoComplete="on"
             />
 
-            <div>Teacher Code:</div>
-            <input
-                type="number"
-                name="teacher_id"
-                value={userInput.teacher_id}
-                onChange={inputHandler}
-            />
-
-            <div>Period:</div>
-            <input
-                type="number"
-                name="period"
-                value={userInput.period}
-                onChange={inputHandler}
-            />
-
             {taken && (
                 <div>
                     <div>Username Taken</div>

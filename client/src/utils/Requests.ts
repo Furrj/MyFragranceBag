@@ -1,7 +1,6 @@
 import axios, { HttpStatusCode } from "axios";
 
 // TYPES
-import { T_PostGameStats } from "../pages/Game/types";
 import {
     T_LoginResult,
     T_UserInput_Login,
@@ -64,9 +63,6 @@ export async function attemptRegister(
                 password: userInput.password,
                 first_name: userInput.first_name,
                 last_name: userInput.last_name,
-                teacher_id: userInput.teacher_id,
-                period: userInput.period,
-                role: "S",
             },
         });
 
@@ -108,35 +104,6 @@ export async function validateSession(
             }
         }
         return validateResult;
-    } catch (err: any) {
-        throw new Error(err);
-    }
-}
-
-export async function sendPostGameStats(
-    stats: T_PostGameStats,
-    user_id: number
-): Promise<void> {
-    try {
-        const sendObj = {
-            user_id,
-            ...stats,
-        };
-
-        const send = await axios({
-            method: "POST",
-            url: SUBMIT_RESULTS,
-            data: {
-                user_id,
-                ...stats,
-            },
-        });
-
-        if (send.status != HttpStatusCode.Ok) {
-            console.log(send.status);
-        } else {
-            console.log(send.data);
-        }
     } catch (err: any) {
         throw new Error(err);
     }

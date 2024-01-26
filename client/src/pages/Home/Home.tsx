@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 
 // Comps
 import LogoutBtn from "../../ui/LogoutBtn";
+import Protected from "../../auth/Protected.tsx";
 
 // TS
 import { T_UserData } from "../../types/UserData.ts";
@@ -24,19 +25,24 @@ const Home: React.FC<IProps> = ({
     const navigate = useNavigate();
 
     return (
-        <div id="home_main_container">
-            {validationCompleted ? (
-                <div>
-                    <h1>HOME</h1>
-                    <LogoutBtn
-                        setUserData={setUserData}
-                        setLoggedIn={setLoggedIn}
-                    />
-                </div>
-            ) : (
-                <h1>Loading...</h1>
-            )}
-        </div>
+        <Protected
+            validationCompleted={validationCompleted}
+            loggedIn={loggedIn}
+        >
+            <div id="home_main_container">
+                {validationCompleted ? (
+                    <div>
+                        <h1>My Fragances</h1>
+                        <LogoutBtn
+                            setUserData={setUserData}
+                            setLoggedIn={setLoggedIn}
+                        />
+                    </div>
+                ) : (
+                    <h1>Loading...</h1>
+                )}
+            </div>
+        </Protected>
     );
 };
 

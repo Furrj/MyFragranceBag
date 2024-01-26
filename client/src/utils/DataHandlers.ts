@@ -13,18 +13,7 @@ export function getUserDataFromAPIResponse(
     userData.username = response.user_data.username;
     userData.first_name = response.user_data.first_name;
     userData.last_name = response.user_data.last_name;
-    userData.role = response.user_data.role;
     userData.session_key = response.session_key;
-
-    // Role-related
-    switch (response.user_data.role) {
-        case "S":
-            userData.student_data.period = response.student_data.period;
-            userData.student_data.teacher_id = response.student_data.teacher_id;
-            break;
-        case "T":
-            userData.teacher_data.periods = response.teacher_data.periods;
-    }
 
     return userData;
 }
