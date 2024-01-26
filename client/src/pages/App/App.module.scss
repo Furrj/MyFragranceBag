@@ -1,0 +1,54 @@
+@import "../../styles/mixins";
+@import "../../styles/vars";
+
+.root {
+	@include full-size-view;
+
+	@include flex-center;
+
+	overflow: hidden;
+
+	background: $color-bg;
+
+	.appGridWrapper {
+		@include full-size-view;
+
+		display: grid;
+		grid-template-columns: 1fr 2fr 1fr;
+
+		overflow-x: hidden;
+		overflow-y: auto;
+		white-space: nowrap;
+
+		@media only screen and (max-width: 900px) {
+			& {
+				height: 100%;
+				grid-template-columns: 1fr 3fr 1fr;
+			}
+		}
+
+		@media only screen and (max-width: 800px) {
+			& {
+				height: 100%;
+				grid-template-columns: 1fr 2fr 1fr;
+			}
+		}
+
+		@media only screen and (max-width: 550px) {
+			& {
+				height: 100%;
+				grid-template-columns: 1fr 4fr 1fr;
+			}
+		}
+
+		.spacer {
+			width: 100%;
+		}
+
+		.appCont {
+			@include full-size-percent;
+
+			@include flex-center;
+		}
+	}
+}
