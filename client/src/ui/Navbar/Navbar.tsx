@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.scss";
 import { Link } from "react-router-dom";
-import logo from "../../assets/mathtestr_logo.png";
 
 // TS
 import { T_UserData } from "../../types/UserData.ts";
@@ -37,8 +36,6 @@ const Navbar: React.FC<IProps> = ({ loggedIn, userData, verticalMode }) => {
 
     return (
         <div onMouseOver={expand} onMouseOut={collapse} className={rootMode}>
-            <img src={logo} alt="logo" className={styles.logo} />
-
             <Link to="/" className={styles.btn}>
                 <span>
                     <i className={`fa-solid fa-house ${styles.icon}`} />
