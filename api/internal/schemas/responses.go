@@ -8,8 +8,9 @@ type BasicUserDataResponse struct {
 }
 
 type LoginResponse struct {
-	Valid    bool                  `json:"valid"`
-	UserData BasicUserDataResponse `json:"user_data,omitempty"`
+	Valid      bool                  `json:"valid"`
+	UserData   BasicUserDataResponse `json:"user_data,omitempty"`
+	SessionKey string                `json:"session_key"`
 }
 
 type RegisterResponse struct {

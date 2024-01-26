@@ -47,11 +47,18 @@ func (r *RouteHandler) Login(ctx *gin.Context) {
 		ctx.JSON(http.StatusNotFound, loginResponse)
 	}
 
+	// Get session data
+	sessionData, err := r.dbHandler.GetUserSessionDataByUserID(userData.UserID)
+	if err != nil {
+		fmt.Printf("Error retrieving session data: %+v\n", err)
+	}
+
 	loginResponse.UserData.UserID = userData.UserID
 	loginResponse.UserData.Username = userData.Username
 	loginResponse.UserData.FirstName = userData.FirstName
 	loginResponse.UserData.LastName = userData.LastName
 	loginResponse.Valid = true
+	loginResponse.SessionKey = sessionData.SessionKey
 
 	ctx.JSON(http.StatusOK, loginResponse)
 }
