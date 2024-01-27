@@ -6,6 +6,7 @@ import styles from "./App.module.scss";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import { Spinner } from "react-bootstrap";
 
 // TS
 import { initUserData, T_UserData } from "../../types/UserData.ts";
@@ -112,7 +113,10 @@ const App: React.FC = () => {
                         />
                     </Routes>
                 ) : (
-                    <h1>Loading...</h1>
+                    <div>
+                        <h1>Loading</h1>
+                        <Spinner animation="border" />
+                    </div>
                 )}
             </div>
         </div>
