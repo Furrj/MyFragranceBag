@@ -21,7 +21,7 @@ CREATE TABLE user_session_data
         FOREIGN KEY (user_id)
             REFERENCES user_account_info (user_id)
 );
-s
+
 
 INSERT INTO user_account_info (username, password, first_name, last_name)
 VALUES ('Poemmys', 'password', 'Jackson', 'Furr');
