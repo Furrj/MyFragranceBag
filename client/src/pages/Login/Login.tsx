@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate, NavigateFunction, Link } from "react-router-dom";
-import styles from "./Login.module.css";
+import styles from "./Login.module.scss";
 
 // Logic
 import { getUserDataFromAPIResponse } from "../../utils/DataHandlers.ts";
@@ -80,7 +80,7 @@ const LoginPage: React.FC<IProps> = ({
     };
 
     return (
-        <div className={styles.loginCont}>
+        <div className={styles.root}>
             <div>Username:</div>
             <input
                 type="text"

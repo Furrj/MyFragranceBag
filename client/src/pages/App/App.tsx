@@ -71,7 +71,7 @@ const App: React.FC = () => {
     }
 
     return (
-        <div className="root">
+        <div className={styles.root}>
             <div className={styles.appCont}>
                 {validationCompleted ? (
                     <Routes>

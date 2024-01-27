@@ -2,7 +2,8 @@
 @import "../../styles/vars";
 
 .root {
-    @include full-size-view;
+    width: 100dvw;
+    min-height: 100dvh;
 
     @include flex-center;
 

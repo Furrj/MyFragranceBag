@@ -17,7 +17,7 @@ func (r *RouteHandler) Login(ctx *gin.Context) {
 	// Bind loginPayload
 	if err := ctx.BindJSON(&loginPayload); err != nil {
 		fmt.Printf("Error binding json: %+v\n", err)
-		ctx.String(http.StatusNotFound, "Error")
+		ctx.JSON(http.StatusOK, loginResponse)
 		return
 	}
 	fmt.Printf("Login Payload: %+v\n", loginPayload)
@@ -26,7 +26,7 @@ func (r *RouteHandler) Login(ctx *gin.Context) {
 	exists, err := r.dbHandler.CheckIfUsernameExists(loginPayload.Username)
 	if err != nil {
 		fmt.Printf("Error in CheckIfUsernameExists: %+v\n", err)
-		ctx.JSON(http.StatusNotFound, loginResponse)
+		ctx.JSON(http.StatusOK, loginResponse)
 		return
 	}
 	if !exists {
@@ -39,26 +39,29 @@ func (r *RouteHandler) Login(ctx *gin.Context) {
 	userData, err := r.dbHandler.GetUserAccountInfoByUsername(loginPayload.Username)
 	if err != nil {
 		fmt.Printf("Error in GetBasicUserInfoByUsername: %+v\n", err)
-		ctx.JSON(http.StatusNotFound, loginResponse)
+		ctx.JSON(http.StatusOK, loginResponse)
 		return
 	}
 
 	if loginPayload.Password != userData.Password {
-		ctx.JSON(http.StatusNotFound, loginResponse)
+		ctx.JSON(http.StatusOK, loginResponse)
+		return
 	}
 
 	// Get session data
 	sessionData, err := r.dbHandler.GetUserSessionDataByUserID(userData.UserID)
 	if err != nil {
 		fmt.Printf("Error retrieving session data: %+v\n", err)
+		ctx.JSON(http.StatusOK, loginResponse)
+		return
 	}
 
 	loginResponse.UserData.UserID = userData.UserID
 	loginResponse.UserData.Username = userData.Username
 	loginResponse.UserData.FirstName = userData.FirstName
 	loginResponse.UserData.LastName = userData.LastName
-	loginResponse.Valid = true
 	loginResponse.SessionKey = sessionData.SessionKey
+	loginResponse.Valid = true
 
 	ctx.JSON(http.StatusOK, loginResponse)
 }
