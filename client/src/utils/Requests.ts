@@ -15,10 +15,11 @@ import { T_UserData, T_UserSessionData } from "../types/UserData.ts";
 import { T_ValidateResult, initValidateResult } from "../types/Validate.ts";
 
 // Routes
-const LOGIN_ROUTE: string = "/api/login";
-const REGISTER_ROUTE: string = "/api/register";
-const VALIDATE_ROUTE: string = "/api/validateSession";
-const SUBMIT_RESULTS: string = "/api/testResult";
+const prefix: string =
+    import.meta.env.DEV == true ? "http://localhost:5000" : "";
+const LOGIN_ROUTE: string = prefix + "/api/login";
+const REGISTER_ROUTE: string = prefix + "/api/register";
+const VALIDATE_ROUTE: string = prefix + "/api/validateSession";
 
 export async function attemptLogin(
     userInput: T_UserInput_Login
