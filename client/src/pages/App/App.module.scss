@@ -2,19 +2,29 @@
 @import "../../styles/vars";
 
 .root {
-    width: 100dvw;
-    min-height: 100dvh;
+    width: 100%;
+    min-height: 100%;
 
     @include flex-center;
 
     overflow-x: hidden;
-    overflow-y: auto;
 
     background: $color-bg;
 
+    .spacer {
+        width: 100%;
+        height: 75px;
+    }
+
     .appCont {
-        @include full-size-percent;
+        width: 100%;
+        min-height: 100%;
 
         @include flex-center;
+
+        overflow-x: hidden;
+        margin-bottom: 10px;
+
+        border: 5px solid black;
     }
 }

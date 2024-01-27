@@ -6,6 +6,7 @@ import styles from "./App.module.scss";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
 import Register from "../Register/Register";
+import Nav from "../../ui/Nav/Nav.tsx";
 import { Spinner } from "react-bootstrap";
 
 // TS
@@ -73,6 +74,8 @@ const App: React.FC = () => {
 
     return (
         <div className={styles.root}>
+            <Nav />
+            <div className={styles.spacer}></div>
             <div className={styles.appCont}>
                 {validationCompleted ? (
                     <Routes>
