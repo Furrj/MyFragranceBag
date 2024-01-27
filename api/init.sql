@@ -6,7 +6,7 @@ DROP TABLE IF EXISTS user_account_info;
 CREATE TABLE user_account_info
 (
     user_id    SERIAL PRIMARY KEY,
-    username   VARCHAR(32),
+    username   VARCHAR(32) UNIQUE,
     password   VARCHAR(32),
     first_name VARCHAR(32),
     last_name  VARCHAR(32)
