@@ -119,9 +119,7 @@ const LoginPage: React.FC<IProps> = ({
                     <br />
                 </div>
             )}
-            <button className="btn btn-primary" onClick={onLoginSubmit}>
-                Login
-            </button>
+            <button onClick={onLoginSubmit}>Login</button>
             <Link to={"/register"}>
                 <button>Register</button>
             </Link>
