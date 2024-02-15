@@ -1,24 +1,79 @@
 @import "../../styles/mixins";
+@import "../../styles/vars";
 
 .root {
-    width: 100%;
-    min-height: 100%;
+    @include full-size-percent;
 
-    @include flex-center;
+    .title {
+        width: 100%;
 
-    overflow-y: auto;
+        position: relative;
+        top: 0;
 
-    border: 5px solid black;
-
-    .test {
-        width: 200px;
-        height: 1000px;
-        background: yellow;
+        @include flex-center;
     }
-}
 
-.test {
-    width: 200px;
-    height: 1000px;
-    background: yellow;
+    .main {
+        min-height: 300px;
+
+        margin-top: 1rem;
+
+        @include flex-center;
+        gap: 50px;
+
+        padding-bottom: 50px;
+
+        .owned {
+            width: 70%;
+            height: fit-content;
+            min-height: 200px;
+            border: $border;
+            border-radius: 1rem;
+
+            h2 {
+                width: 100%;
+                height: fit-content;
+                border-bottom: $border;
+
+                background-color: white;
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+
+                @include flex-center;
+            }
+
+            div {
+                @include full-size-percent;
+                @include flex-center;
+            }
+        }
+
+        .add {
+            width: 50%;
+            height: fit-content;
+            border: $border;
+            border-radius: 1rem;
+
+            h2 {
+                width: 100%;
+                height: fit-content;
+                border-bottom: $border;
+
+                @include flex-center;
+
+                background-color: white;
+                border-top-right-radius: 1rem;
+                border-top-left-radius: 1rem;
+            }
+
+            div {
+                @include full-size-percent;
+                @include flex-center;
+
+                button {
+                    margin: 1rem;
+                }
+            }
+        }
+    }
 }

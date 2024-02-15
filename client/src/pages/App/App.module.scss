@@ -17,10 +17,8 @@
     }
 
     .appCont {
-        width: 100%;
-        min-height: 100%;
-
-        @include flex-center;
+        width: 100vw;
+        min-height: calc(100vh - 75px);
 
         overflow-x: hidden;
         margin-bottom: 10px;
